@@ -1,1 +1,167 @@
-link chạy: https://phamvulinh18.github.io/crush3/
+link chạy: <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Anh có muốn đii chơi với em hongg</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <style>
+      .center-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      img {
+        width: 350px;
+      }
+      .buttones {
+        width: 100%;
+        text-align: center;
+      }
+      .btn {
+        display: inline-block;
+      }
+      h2 {
+        color: white;
+        font-size: 18px;
+
+        padding-top: 2px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .mainn a {
+        text-decoration: none;
+        position: absolute;
+        right: 2%;
+        color: red;
+        bottom: 2%;
+      }
+      #nooo {
+        background: transparent;
+        color: red;
+        border: none;
+      }
+      .nooo {
+        color: red;
+        font-weight: 700;
+        font-size: 25px;
+      }
+      #nobut {
+        background: red;
+      }
+      #yesbut {
+        background: green;
+        padding: 10px;
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+      h1 {
+        text-shadow: 0 0 10px rgba(255, 254, 255, 0.68);
+        font-family: cursive;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="app"
+      class="center-screen"
+      style="display: flex; flex-direction: column"
+    >
+    <p style="text-align: center; margin-top: 100px;">nếu thoát ra hoặc không chọn thì làm chồng em</p>
+     <h1 style="text-align: center; margin-bottom: 20px; font-family: Arial, sans-serif;">Em  ơi mai đi xem phim với anh hongg?</h1>
+      <img
+        src="https://raw.githubusercontent.com/DzarelDeveloper/Img/main/Let's%20go.gif"
+        alt=""
+      />
+      <button
+        type="button"
+        class="btn btn-danger"
+        @click="changeText('noButton')"
+        id="nooo"
+      >
+        <h2 class="nooo" @click="changeText('heading') ">
+          {{ currentHeaderText }}
+        </h2>
+      </button>
+      <div class="buttones">
+        <button
+          type="button"
+          class="btn btn-success mr-2"
+          :style="{ fontSize: yesButtonSize + 'rem' }"
+          :key="yesButtonSize"
+          @click="yesButton"
+          id="yesbut"
+        >
+          Yes
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-danger"
+          @click="changeText('noButton')"
+          id="nobut"
+        >
+          <h2>No</h2>
+        </button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          headerText: [
+            "",
+            "Anh muốn em đi cùng với anh :)",
+            "Cùng nhau đi xem nhee",
+            "À, đi thôi,anh sẽ mời em",
+            "Chỉ lần này thôi, đi vs a đi mò",
+            "Chỉ có chúng ta [hai người], được hk?",
+            "Tại sao em không muốn? Anh mời em, đi thôi",
+            "Đi thôi,anh sẽ chờ em ",
+            "Đi thôi, đi cùng anh nha",
+            "Anh cx muốn đi xem phim cùng em",
+            "Đi thôi, chúng ta đi cùng nhau",
+            "Em có muốn đi cùng anh không? Đi thôi",
+            "Như thế nào? Chúng ta chỉ cần xem cùng nhau thôi",
+          ],
+          confirmationMessages: [
+            "Em chắc chắn chứ?",
+            "Em chắc chắn anh không muốn đi cùng em chứ?",
+            "Em chắc chắn tuyệt đối chứ?",
+          ],
+          currentHeaderTextIndex: 0,
+          currentConfirmationIndex: 0,
+          yesButtonSize: 1,
+        },
+        methods: {
+          changeText(button) {
+            if (button === "noButton") {
+              this.currentHeaderTextIndex =
+                (this.currentHeaderTextIndex + 1) % this.headerText.length;
+              this.currentConfirmationIndex =
+                (this.currentConfirmationIndex + 1) %
+                this.confirmationMessages.length;
+              this.yesButtonSize += 5;
+            }
+          },
+          yesButton() {
+            window.location.href = "date.html";
+          },
+        },
+        computed: {
+          currentHeaderText() {
+            return this.headerText[this.currentHeaderTextIndex];
+          },
+          currentConfirmationText() {
+            return this.confirmationMessages[this.currentConfirmationIndex];
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
